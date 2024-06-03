@@ -4,7 +4,7 @@
 // Define os pinos dos sensores e componentes
 #define PINO_DHT 2  // Pino do sensor DHT11
 #define TIPO_DHT DHT11
-#define PINO_PH A0  // Pino do sensor de pH
+#define PINO_POTENCIOMETRO A0  // Pino do potenciômetro
 #define PINO_TRIGGER 12 // Pino do sensor de proximidade HC-SR04
 #define PINO_ECHO 11 // Pino do sensor de proximidade HC-SR04
 #define PINO_BUZINA 8  // Pino da buzina
@@ -71,9 +71,9 @@ void loop() {
 }
 
 float obterValorPH() {
-  // Lê o valor do sensor de pH e converte para unidades de pH
-  int valorSensor = analogRead(PINO_PH);
-  float valorPH = (float)valorSensor * 5.0 / 1023.0;
+  // Lê o valor do potenciômetro e converte para unidades de pH
+  int valorSensor = analogRead(PINO_POTENCIOMETRO);
+  float valorPH = map(valorSensor, 0, 1023, PH_MIN, PH_MAX);
   return valorPH;
 }
 
